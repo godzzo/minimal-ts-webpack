@@ -12,6 +12,7 @@
 	"author": "",
 	"license": "MIT",
 	"dependencies": {
+		"@editorjs/editorjs": "^2.23.2",
 		"lodash": "^4.17.21"
 	},
 	"devDependencies": {
