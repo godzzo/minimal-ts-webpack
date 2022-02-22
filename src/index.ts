@@ -36,6 +36,7 @@ document.body.appendChild(component());
 (globalThis as any).editor = new EditorJS({
 	holder: "editorjs",
 	data: sampleData,
+	minHeight: 10,
 });
 
 function saveEditorData() {
