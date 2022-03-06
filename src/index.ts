@@ -1,11 +1,50 @@
-import * as _ from "lodash";
+const tinymce = (globalThis as any).tinymce;
 
-function component() {
-	const element = document.createElement("div");
+const emailSpanConfig = {
+	selector: ".tinymce-span",
+	menubar: false,
+	inline: true,
+	plugins: ["lists", "autolink"], // , "powerpaste"
+	toolbar: "undo redo | bold italic underline",
+	valid_elements: "strong,em,span[style],a[href]",
+	valid_styles: {
+		"*": "font-size,font-family,color,text-decoration,text-align",
+	},
+	powerpaste_word_import: "clean",
+	powerpaste_html_import: "clean",
+};
 
-	element.innerHTML = _.join(["Hello", "CHANGED webpack"], " ");
+const emailHeaderConfig = {
+	selector: ".tinymce-heading",
+	menubar: false,
+	inline: true,
+	plugins: ["lists", "autolink"], // , "powerpaste"
+	toolbar: "undo redo | bold italic underline",
+	valid_elements: "strong,em,span[style],a[href]",
+	valid_styles: {
+		"*": "font-size,font-family,color,text-decoration,text-align",
+	},
+	powerpaste_word_import: "clean",
+	powerpaste_html_import: "clean",
+};
 
-	return element;
-}
+const emailBodyConfig = {
+	selector: ".tinymce-body",
+	menubar: false,
+	inline: true,
+	plugins: ["link", "lists", "autolink", "tinymcespellchecker"], // , "powerpaste"
+	toolbar: [
+		"undo redo | bold italic underline | fontselect fontsizeselect",
+		"forecolor backcolor | alignleft aligncenter alignright alignfull | numlist bullist outdent indent",
+	],
+	valid_elements: "p[style],strong,em,span[style],a[href],ul,ol,li",
+	valid_styles: {
+		"*": "font-size,font-family,color,text-decoration,text-align",
+	},
+	powerpaste_word_import: "clean",
+	powerpaste_html_import: "clean",
+};
 
-document.body.appendChild(component());
+tinymce.init(emailHeaderConfig);
+tinymce.init(emailBodyConfig);
+tinymce.init(emailSpanConfig);
